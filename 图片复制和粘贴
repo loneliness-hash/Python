@@ -1,0 +1,23 @@
+import os,shutil
+
+t = 0
+name = input("输入你的图片名称：")#可以把我想要的图片命名成我想要的名称
+photo = []
+for i in os.listdir("D:\Backup\Downloads"):#在“下载”文件夹上遍历所有文件
+	if i.endswith("jpg"):#还只能搜索.jpg文件
+		t = t + 1#图片的序号
+		question = name + "(" + str(t) + ")" + ".jpg"#图片的新名称
+		a = os.path.join("D:\Backup\Downloads",i)
+		b = os.path.join("D:\Backup\Documents\My Pictures\背景",question)#我的图片文件夹
+		shutil.move(a,b)
+		print("曾经:" + i)
+		print("现在：" + question)
+		print("-"*20)
+		photo.append(i)#将旧的图片名称加入"photo"列表
+if len(photo) != 0:#如果有图片
+	print("程序结束")
+	nothing = input()#没什么意思，只是让python的窗口不要快速关闭。
+else:
+	print("没有找到图片")
+	print("程序结束")
+	nothing = input()
